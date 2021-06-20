@@ -58,7 +58,7 @@ class ptvoTemperature(CustomDevice):
                 DEVICE_TYPE: zha.DeviceType.ON_OFF_LIGHT,
                 INPUT_CLUSTERS: [
                     Basic.cluster_id,
-					Diagnostic.cluster_id,
+                    Diagnostic.cluster_id,
                     OnOff.cluster_id,
                 ],
                 OUTPUT_CLUSTERS: [Basic.cluster_id, OnOff.cluster_id],
@@ -77,7 +77,7 @@ class ptvoTemperature(CustomDevice):
            1: {
                 INPUT_CLUSTERS: [
                     Basic.cluster_id,
-					Diagnostic.cluster_id,
+                    Diagnostic.cluster_id,
                     OnOff.cluster_id,
                 ],
                 OUTPUT_CLUSTERS: [Basic.cluster_id, OnOff.cluster_id],
