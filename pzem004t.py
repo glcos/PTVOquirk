@@ -40,6 +40,7 @@ class PtvoAnalogInputCluster(CustomCluster, AnalogInput):
 
     def _update_attribute(self, attrid, value):
         super()._update_attribute(attrid, value)
+        
         if value is not None:
         
             if attrid == 85:
@@ -82,18 +83,6 @@ class TemperatureMeasurementCluster(LocalDataCluster, TemperatureMeasurement):
         self._update_attribute(self.MEASURED_VALUE_ID, value)
 
 
-class ElectricalMeasurementVolt(ElectricalMeasurement):
-
-    SENSOR_ATTR = "rms_voltage"
-    _unit = ELECTRIC_POTENTIAL_VOLT
-
-
-class ElectricalMeasurementAmps(ElectricalMeasurement):
-
-    SENSOR_ATTR = "rms_current"
-    _unit = ELECTRIC_CURRENT_AMPERE
-
-
 class ElectricalMeasurementCluster(LocalDataCluster, ElectricalMeasurement):
     """Electrical measurement cluster."""
 
@@ -110,7 +99,7 @@ class ElectricalMeasurementCluster(LocalDataCluster, ElectricalMeasurement):
         self._update_attribute(self.POWER_ID, value)
 
 
-class ElectricalMeasurementRMSVoltageCluster(LocalDataCluster, ElectricalMeasurementVolt):
+class ElectricalMeasurementRMSVoltageCluster(LocalDataCluster, ElectricalMeasurement):
     """Electrical measurement cluster."""
 
     cluster_id = ElectricalMeasurement.cluster_id
@@ -126,7 +115,7 @@ class ElectricalMeasurementRMSVoltageCluster(LocalDataCluster, ElectricalMeasure
         self._update_attribute(self.VOLTAGE_ID, value)
 
 
-class ElectricalMeasurementRMSCurrentCluster(LocalDataCluster, ElectricalMeasurementAmps):
+class ElectricalMeasurementRMSCurrentCluster(LocalDataCluster, ElectricalMeasurement):
     """Electrical measurement cluster."""
 
     cluster_id = ElectricalMeasurement.cluster_id
@@ -201,8 +190,8 @@ class pzem004t(CustomDevice):
                     PtvoAnalogInputCluster,
                     TemperatureMeasurementCluster,
                     ElectricalMeasurementCluster,
-                    ElectricalMeasurementRMSVoltageCluster,
                     ElectricalMeasurementRMSCurrentCluster,
+                    ElectricalMeasurementRMSVoltageCluster,
                 ],
                 OUTPUT_CLUSTERS: [Basic.cluster_id],
             },
