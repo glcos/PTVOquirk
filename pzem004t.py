@@ -89,11 +89,12 @@ class SmartEnergyCluster(LocalDataCluster, Metering):
 
     cluster_id = Metering.cluster_id
     CURRENT_SUMM_DELIVERED_VALUE_ID = 0x0000
-    INSTANTANEOUS_DEMAND_VALUE_ID = 0X0400
-    UNIT_OF_MEASURE_VALUE_ID = 0x0300
+    INSTANTANEOUS_DEMAND_VALUE_ID = 0x0400
 
     POWER_WATT = 0x0000
-    ENERGY_KILO_WATT_HOUR = 0x0000
+    
+    """Setting unit of measurement."""
+    _CONSTANT_ATTRIBUTES = {0x0300: POWER_WATT}
     
     def __init__(self, *args, **kwargs):
         """Init."""
